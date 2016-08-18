@@ -1,5 +1,5 @@
-### JAVA8-Stream
-流是JAVA8 API的新成员，它允许你以声明方式处理数据集合，你可以把它看成遍历数据集的高级迭代器；此外，流还可以透明地的并行处理，让你的代码性能更好。
+### Java8-Stream
+流是Java8 API的新成员，它允许你以声明方式处理数据集合，你可以把它看成遍历数据集的高级迭代器；此外，流还可以透明地的并行处理，让你的代码性能更好。
 
 ### 构建流
 1. 由值创建流
@@ -178,7 +178,7 @@ boolean flag = menu.stream().anyMatch(Dish::isVegetarian);
 ```
 Optional optional = menu.stream().findFirst();
 ```
-`Otpional<T>`类是一个容器类，代表一个值存在或者不存在；JAVA8引入`Optional<T>`，这样就不会出现NUll的问题了，比如上面如果菜单为空，如何获取第一个元素。
+`Otpional<T>`类是一个容器类，代表一个值存在或者不存在；Java8引入`Optional<T>`，这样就不会出现NUll的问题了，比如上面如果菜单为空，如何获取第一个元素。
 `Optional<T>`提供了以下方法让你处理值不存在的情形：
 * `isPresent()`将在`Optaional`包含值的时候返回为true否则false
 * `isPresent(Consumer<T> block)`会在值存在的时候指定给定代码
@@ -198,7 +198,7 @@ menu.stream().forEach(a -> System.out.println(a.getName()));
 ```
 menu.stream().map(Dish::getName).collect(Collectors.toList());
 ```
-collect实际上也是一种归约操作，接收Collecttors参数可以实现更高级的汇总，比如实现菜单按照素食非素质归类，按照热量范畴归类等等。见 [JAVA8-Collectors]()
+collect实际上也是一种归约操作，接收Collecttors参数可以实现更高级的汇总，比如实现菜单按照素食非素质归类，按照热量范畴归类等等。见 [Java8-Collectors]()
 
 
 ##### reduce
@@ -216,7 +216,7 @@ menu.stream().map(Dish::getCalories).reduce(Integer::sum);
 但是这种写法有性能问题，它有一个暗含的装箱成本，每个Integer必须拆分成一个原始类型再进行求和。Stream API提供了原始类型流特化来专门支持处理数值流的方法。见下。
 
 ##### 原始类型特化
-JAVA8提供了3个原始类型流接口：IntStream/DoubleStream/LongStream，分别将流中的元素特化为int/long/double，从而避免暗含的装箱成本。每个接口都提供了常用的规约方法，比如max/sum/min等。
+Java8提供了3个原始类型流接口：IntStream/DoubleStream/LongStream，分别将流中的元素特化为int/long/double，从而避免暗含的装箱成本。每个接口都提供了常用的规约方法，比如max/sum/min等。
 比如上面实例可以写成
 ```
 menu.stream().mapToInt(Dish::getCalories).sum();
